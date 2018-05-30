@@ -13,7 +13,7 @@ var wizardSpeed = 3;
 var wizardWidth = 70;
 
 // Функция высоты мага
-var getWizardHeight = function(wizardWidth) {
+var getWizardHeight = function (wizardWidth) {
   var heightWidth = 1.337 * wizardWidth;
   return heightWidth;
 };
