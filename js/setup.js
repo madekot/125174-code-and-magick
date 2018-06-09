@@ -60,24 +60,60 @@ var doAvatartWizards = function (quantity) {
       };
   }
 };
-
 doAvatartWizards(4);
-
 
 document.querySelector('.setup-similar').classList.remove('hidden');
 
 var similarListElement = document.querySelector('.setup-similar-list');
+
 var similarWizardTemplate = document.querySelector('#similar-wizard-template')
     .content
     .querySelector('.setup-similar-item');
 
-
-for (var i = 0; i < wizards.length; i++) {
+var renderWizard = function (wizard) {
   var wizardElement = similarWizardTemplate.cloneNode(true);
 
-  wizardElement.querySelector('.setup-similar-label').textContent = wizards[i].name;
-  wizardElement.querySelector('.wizard-coat').style.fill = wizards[i].coatColor;
-  wizardElement.querySelector('.wizard-eyes').style.fill = wizards[i].eyesColor;
+  wizardElement.querySelector('.setup-similar-label').textContent = wizard.name;
+  wizardElement.querySelector('.wizard-coat').style.fill = wizard.coatColor;
+  wizardElement.querySelector('.wizard-eyes').style.fill = wizard.eyesColor;
 
-  similarListElement.appendChild(wizardElement);
+  return wizardElement;
+};
+
+var fragment = document.createDocumentFragment();
+for (var i = 0; i < wizards.length; i++) {
+  fragment.appendChild(renderWizard(wizards[i]));
 }
+similarListElement.appendChild(fragment);
+
+userDialog.querySelector('.setup-similar').classList.remove('hidden');
+
+
+// for (var i = 0; i < wizards.length; i++) {
+//   var wizardElement = similarWizardTemplate.cloneNode(true);
+//
+//   wizardElement.querySelector('.setup-similar-label').textContent = wizards[i].name;
+//   wizardElement.querySelector('.wizard-coat').style.fill = wizards[i].coatColor;
+//   wizardElement.querySelector('.wizard-eyes').style.fill = wizards[i].eyesColor;
+//
+//   similarListElement.appendChild(wizardElement);
+// }
+
+
+// document.querySelector('.setup-similar').classList.remove('hidden');
+//
+// var similarListElement = document.querySelector('.setup-similar-list');
+// var similarWizardTemplate = document.querySelector('#similar-wizard-template')
+//     .content
+//     .querySelector('.setup-similar-item');
+//
+//
+// for (var i = 0; i < wizards.length; i++) {
+//   var wizardElement = similarWizardTemplate.cloneNode(true);
+//
+//   wizardElement.querySelector('.setup-similar-label').textContent = wizards[i].name;
+//   wizardElement.querySelector('.wizard-coat').style.fill = wizards[i].coatColor;
+//   wizardElement.querySelector('.wizard-eyes').style.fill = wizards[i].eyesColor;
+//
+//   similarListElement.appendChild(wizardElement);
+// }
