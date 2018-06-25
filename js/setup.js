@@ -128,6 +128,7 @@ var openPopup = function () {
 // функция обработчика закрытия окна настроек
 var closePopup = function () {
   setup.classList.add('hidden');
+  document.removeEventListener('keydown', onPopupEscPress);
 };
 
 
@@ -164,8 +165,8 @@ setupClose.addEventListener('keydown', function (evt) {
 
 // функция генерации индекса случайного элемента массива + вывода его значения
 var doElementArrayRandom = function (array) {
-  doElementArrayRandom = array[Math.floor(Math.random() * array.length)];
-  return doElementArrayRandom;
+  element = array[Math.floor(Math.random() * array.length)];
+  return element;
 };
 
 // Нахожу элемент мантии волшебника
